@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- classPathEntry:数据库的JDBC驱动,换成你自己的驱动位置 -->
+    <classPathEntry location="D:\amavenDailMa\mysql\mysql-connector-java\8.0.13\mysql-connector-java-8.0.13.jar"/>
+
+    <context id="generatorTables" targetRuntime="MyBatis3">
+
+
+        <!-- 此处是将Example改名为Criteria 当然 想改成什么都行 -->
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example"/>
+            <property name="replaceString" value="Query"/>
+        </plugin>
+
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- commentGenerator 去除自动生成的注释  -->
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+
+        <!-- jdbcConnection是指定的jdbc的连接信息； -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://58.213.112.90:7812/sckelun?serverTimezone=UTC"
+                        userId="sc_kelun"
+                        password="123456">
+        </jdbcConnection>
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+        <!--connectionURL="jdbc:mysql://192.168.4.36:3307/base_gensci"-->
+        <!--userId="bjhzyl"-->
+        <!--password="hzyl2017">-->
+        <!--</jdbcConnection>-->
+
+        <!--
+        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，
+        把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+        -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径； -->
+        <javaModelGenerator targetPackage="cn.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- sqlMapGenerator是mybatis 的sqlMapper XML文件的生成信息，包括生成路径等； -->
+        <sqlMapGenerator targetPackage="cn.mapper" targetProject="src/main/java/">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- javaClientGenerator是应用接口的生成信息； -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="cn.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+
+        <!-- table是用户指定的被生成相关信息的表，它必须在指定的jdbc连接中已经被建立。 -->
+        <!--<table tableName="sys_menu" domainObjectName="SysMenu" >-->
+        <!-- 返回新增记录ID值 -->
+        <!--<generatedKey column="inv_suspicious" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_area" domainObjectName="SysArea" ></table>-->
+        <!--<table tableName="sys_user" domainObjectName="SysUser" ></table>-->
+        <!--<table tableName="sys_role" domainObjectName="SysRole" ></table>-->
+        <!--<table tableName="sys_dept" domainObjectName="SysDept" ></table>-->
+        <!--<table tableName="sys_menu" domainObjectName="SysMenu" ></table>-->
+        <!--<table tableName="sys_user_role" domainObjectName="SysUserRole" ></table>-->
+        <!--<table tableName="sys_role_dept" domainObjectName="SysRoleDept" ></table>-->
+        <!--<table tableName="sys_role_menu" domainObjectName="SysRoleMenu" ></table>-->
+        <!--<table tableName="sys_log_login" domainObjectName="SysLogLogin" ></table>-->
+        <!--<table tableName="bp_article" domainObjectName="BpArticle" ></table>-->
+        <!--<table tableName="bp_article_content" domainObjectName="BpArticleContent" ></table>-->
+        <!--<table tableName="bp_article_attach" domainObjectName="BpArticleAttach" ></table>-->
+        <!--<table tableName="bp_article_attribute" domainObjectName="BpArticleAttribute" ></table>-->
+        <!--<table tableName="bp_article_read" domainObjectName="BpArticleRead" ></table>-->
+        <!--<table tableName="bp_article_project" domainObjectName="BpArticleProject" ></table>-->
+        <!--<table tableName="bp_article_project" domainObjectName="BpArticleProject" ></table>-->
+        <!--<table tableName="bp_my_schedule" domainObjectName="BpMySchedule" ></table>-->
+        <!--<table tableName="bp_my_collection" domainObjectName="BpMyCollection" ></table>-->
+        <!--        <table tableName="pro_propose" domainObjectName="ProPropose" ></table>-->
+        <!--        <table tableName="pro_propose" domainObjectName="ProPropose" ></table>
+                <table tableName="pro_propose_attach" domainObjectName="ProProposeAttach" ></table>-->
+        <!--<table tableName="bp_web_collection" domainObjectName="BpWebCollection" ></table>-->
+        <!--<table tableName="pro_project_management_approver" domainObjectName="ProProjectManagementApprover" ></table>-->
+        <!--        <table tableName="sys_log_login" domainObjectName="SysLogLogin" ></table>
+                <table tableName="sys_log_message" domainObjectName="SysLogMessage" ></table>
+                <table tableName="sys_log_operation" domainObjectName="SysLogOperation" ></table>
+                <table tableName="sys_log_page" domainObjectName="SysLogPage" ></table>
+                <table tableName="sys_log_pushmessage" domainObjectName="SysLogPushmessage" ></table>
+                <table tableName="sys_log_quartz_task" domainObjectName="SysLogQuartzTask" ></table>-->
+        <!--<table tableName="data_drug_audit_info" domainObjectName="DataDrugAuditInfo" ></table>-->
+        <!--<table tableName="data_be_clinic_test" domainObjectName="DataBEClinicTest" >
+                <columnOverride column="adaptation_disease" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="test_obj" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="sub_info_inc_criteria" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="exper_drug" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="control_drug" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="main_end_indicators_eval_time" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="sec_end_indicators_eval_time" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="org_infos" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="main_inves_info" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="ethics_committee_info" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="sponsor_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <columnOverride column="sub_info_ex_criteria" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>-->
+        <!--<table tableName="pro_project_controller" domainObjectName="ProProjectController" >
+            <columnOverride column="project_remark" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>-->
+        <!--        <table tableName="sys_article_log" domainObjectName="sysArticleLog" >-->
+<!--        <table tableName="dt_drug_price_cg" domainObjectName="DtDrugPriceCg" >-->
+<!--            <property name="useActualColumnNames" value="false" />-->
+<!--            &lt;!&ndash; true 名称和表里一致 ；false 表示下划线转驼峰           &ndash;&gt;-->
+<!--        </table>-->
+    </context>
+
+</generatorConfiguration>
